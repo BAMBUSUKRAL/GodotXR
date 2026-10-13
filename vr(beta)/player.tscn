@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://yulte8slkscv"]
+
+[ext_resource type="Script" uid="uid://dpkux3bt7tbd3" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://cvgq3i3jdq04d" path="res://CS2 crossair.png" id="2_onrkg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_i3pqv"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_hqtel"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="shape" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_sh265")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4flbx")
+
+[node name="neck" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.033089492, 0.6454365, -0.25680518)
+fov = 45.558136
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="crosshair" type="MeshInstance2D" parent="CanvasLayer"]
+position = Vector2(979.00006, 465)
+scale = Vector2(236.25, 132.25)
+mesh = SubResource("QuadMesh_i3pqv")
+texture = ExtResource("2_onrkg")
+
+[node name="meter" type="MeshInstance2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(978, 503.49997)
+scale = Vector2(1956, 1007.00006)
+mesh = SubResource("QuadMesh_hqtel")
